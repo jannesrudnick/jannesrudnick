@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Instagram, Linkedin } from 'lucide-react'
+import { ExternalLink, Github, Instagram, Linkedin, Mail } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -125,6 +125,16 @@ const projects = [
     imageUrl: '/2tts.png',
     year: 2018,
   },
+  {
+    title: "WhatsApp Gruppen Linktree",
+    description: "",
+    link: "https://www.ersti-gruppen.de/",
+    type: "Auftragsarbeit",
+    type2: "Entwicklung",
+    tags: ["Nextjs", "Firebase"],
+    imageUrl: '/2tts.png',
+    year: 2022,
+  },
 ]
 
 export default function Portfolio() {
@@ -149,6 +159,12 @@ export default function Portfolio() {
             </Link>
             <Link href="https://www.instagram.com/jannesrudnick">
               <Instagram className="w-6 h-6"/>
+            </Link>
+            <Link href="https://github.com/jannesrudnick">
+              <Github className="w-6 h-6"/>
+            </Link>
+            <Link href="mailto:mail[at]jannesrudnick.com">
+              <Mail className="w-6 h-6"/>
             </Link>
           </div>
           <div className="">
