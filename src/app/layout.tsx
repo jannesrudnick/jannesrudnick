@@ -35,7 +35,7 @@ export default function RootLayout({
         {children}
         <footer className="border-t mt-8 p-4">
           <div className="gap-4 flex ">
-            <Link href="/impresum">Impressum</Link>
+            <Link href="/impressum">Impressum</Link>
             <Link href="/datenschutz">Datenschutzerklärung</Link>
           </div>
           <div className="mt-10 text-center text-gray-600">
