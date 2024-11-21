@@ -150,7 +150,7 @@ export default function Portfolio() {
 
   return (
 
-    <>
+    <div className="lg:max-w-[80vw] lg:mx-auto">
       <header className="w-full flex justify-between gap-4 lg:flex-row flex-col-reverse">
         <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">🚀 Projekte</h2>
         <div className="text-gray-600 flex gap-2">
@@ -232,7 +232,7 @@ export default function Portfolio() {
 
 
 
-    </>
+    </div>
   )
 }
 
