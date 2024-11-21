@@ -139,11 +139,11 @@ export default function Portfolio() {
   }, {});
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <div className="container mx-auto pt-20">
-        <header className="flex justify-between">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">🚀 Projekte</h2>
-          <div className="text-gray-600 mt-2 flex gap-2">
+    <div className="bg-gray-100 min-h-screen px-6 ">
+      <div className="mx-auto pt-6 lg:pt-20">
+        <header className="w-full flex justify-between gap-4 flex-col lg:flex-row">
+          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">🚀 Projekte</h2>
+          <div className="text-gray-600 flex gap-2">
             <Link href="https://de.linkedin.com/in/jannes-rudnick">
               <Linkedin className="w-6 h-6"/>
             </Link>
@@ -158,7 +158,7 @@ export default function Portfolio() {
         </header>
 
         <main className="">
-          <div className="px-4 py-6 sm:px-0">
+          <div className="">
             {Object.entries(groupedProjects).reverse().map(([year, projects]) => (
               <div key={year}>
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">{year}</h3>
@@ -166,7 +166,7 @@ export default function Portfolio() {
                   {projects.map((project, index) => (
                     <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
                       <div className="relative w-full h-48">
-                        {project.imageUrl && (
+                        {project.imageUrl ? (
                           <Image
                             src={project.imageUrl}
                             alt={project.title}
@@ -174,6 +174,8 @@ export default function Portfolio() {
                             objectFit="cover"
                             className="rounded-t-lg"
                           />
+                        ) : (
+                          <div className="bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 h-full rounded-t-lg"></div>
                         )}
                       </div>
                       <CardHeader>
