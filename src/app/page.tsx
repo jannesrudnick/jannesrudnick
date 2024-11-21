@@ -131,8 +131,8 @@ const projects = [
     link: "https://www.ersti-gruppen.de/",
     type: "Auftragsarbeit",
     type2: "Entwicklung",
-    tags: ["Nextjs", "Firebase"],
-    imageUrl: '/2tts.png',
+    tags: ["Next.js", "Firebase"],
+    imageUrl: undefined,
     year: 2022,
   },
 ]
@@ -149,63 +149,67 @@ export default function Portfolio() {
   }, {});
 
   return (
-    <div className="bg-gray-100 min-h-screen px-6 ">
-      <div className="mx-auto pt-6 lg:pt-20">
-        <header className="w-full flex justify-between gap-4 flex-col lg:flex-row">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">🚀 Projekte</h2>
-          <div className="text-gray-600 flex gap-2">
-            <Link href="https://de.linkedin.com/in/jannes-rudnick">
-              <Linkedin className="w-6 h-6"/>
-            </Link>
-            <Link href="https://www.instagram.com/jannesrudnick">
-              <Instagram className="w-6 h-6"/>
-            </Link>
-            <Link href="https://github.com/jannesrudnick">
-              <Github className="w-6 h-6"/>
-            </Link>
-            <Link href="mailto:mail[at]jannesrudnick.com">
-              <Mail className="w-6 h-6"/>
-            </Link>
-          </div>
-          <div className="">
-            <h1 className="text-2xl font-bold text-gray-900">👩🏻‍🚀 Jannes Rudnick</h1>
-            <p className="mt-1 text-sm text-gray-600">Fullstack Webentwickler</p>
-          </div>
-        </header>
 
-        <main className="">
-          <div className="">
-            {Object.entries(groupedProjects).reverse().map(([year, projects]) => (
-              <div key={year}>
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">{year}</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {projects.map((project, index) => (
-                    <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                      <div className="relative w-full h-48">
-                        {project.imageUrl ? (
-                          <Image
-                            src={project.imageUrl}
-                            alt={project.title}
-                            layout="fill"
-                            objectFit="cover"
-                            className="rounded-t-lg"
-                          />
-                        ) : (
-                          <div className="bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 h-full rounded-t-lg"></div>
-                        )}
+    <>
+      <header className="w-full flex justify-between gap-4 lg:flex-row flex-col-reverse">
+        <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">🚀 Projekte</h2>
+        <div className="text-gray-600 flex gap-2">
+          <Link href="https://de.linkedin.com/in/jannes-rudnick">
+            <Linkedin className="w-6 h-6"/>
+          </Link>
+          <Link href="https://www.instagram.com/jannesrudnick">
+            <Instagram className="w-6 h-6"/>
+          </Link>
+          <Link href="https://github.com/jannesrudnick">
+            <Github className="w-6 h-6"/>
+          </Link>
+          <Link href="mailto:mail[at]jannesrudnick.com">
+            <Mail className="w-6 h-6"/>
+          </Link>
+        </div>
+        <div className="">
+          <h1 className="text-2xl font-bold text-gray-900">👩🏻‍🚀 Jannes Rudnick</h1>
+          <p className="mt-1 text-sm text-gray-600">Fullstack Webentwickler</p>
+        </div>
+      </header>
+
+      <main className="">
+        <div className="">
+          {Object.entries(groupedProjects).reverse().map(([year, projects]) => (
+            <div key={year}>
+              <h3
+                className="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">{year}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projects.map((project, index) => (
+                  <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+                    <div className="relative w-full h-48">
+                      {project.imageUrl ? (
+                        <Image
+                          src={project.imageUrl}
+                          alt={project.title}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition='top'
+                          className="rounded-t-lg"
+                        />
+                      ) : (
+                        <div
+                          className="bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 h-full rounded-t-lg"></div>
+                      )}
+                    </div>
+                    <CardHeader>
+                      <CardTitle>{project.title}</CardTitle>
+                      <CardDescription>{project.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <Badge variant={'outline'}>{project.type}</Badge>
+                        {project.tags.map((tag, tagIndex) => (
+                          <Badge key={tagIndex} variant="secondary">{tag}</Badge>
+                        ))}
                       </div>
-                      <CardHeader>
-                        <CardTitle>{project.title}</CardTitle>
-                        <CardDescription>{project.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          <Badge variant={'outline'}>{project.type}</Badge>
-                          {project.tags.map((tag, tagIndex) => (
-                            <Badge key={tagIndex} variant="secondary">{tag}</Badge>
-                          ))}
-                        </div>
+                      {(project.link?.length || 0) > 0 && (
                         <a
                           href={project.link}
                           target="_blank"
@@ -215,17 +219,20 @@ export default function Portfolio() {
                           Projekt ansehen
                           <ExternalLink className="ml-1 h-4 w-4"/>
                         </a>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </main>
-      </div>
-    </div>
+                      )}
 
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+
+
+
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Link from 'next/link';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,11 +26,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <body
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+    >
+    <div className="bg-gray-100 min-h-screen px-6 ">
+      <div className="mx-auto pt-6 lg:pt-20">
+
         {children}
-      </body>
+        <footer className="border-t mt-8 p-4">
+          <div className="gap-4 flex ">
+            <Link href="/impresum">Impressum</Link>
+            <Link href="/datenschutz">Datenschutzerklärung</Link>
+          </div>
+          <div className="mt-10 text-center text-gray-600">
+            <p>© {new Date().getFullYear()} Jannes Rudnick</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+    </body>
     </html>
   );
 }

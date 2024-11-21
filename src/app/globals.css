@@ -60,6 +60,17 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  .prose {
+    h1, h2, h3 {
+      @apply mt-6;
+        @apply font-bold;
+    }
+
+    p {
+      @apply mt-4;
+    }
+  }
 }
 
 @layer base {
